@@ -1,0 +1,71 @@
+# ─── Dependencies ──────────────────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+
+# ─── Build outputs ─────────────────────────────────────────────────────────
+dist/
+build/
+out/
+.next/
+.expo/
+.expo-shared/
+*.tsbuildinfo
+
+# ─── Environment & secrets ─────────────────────────────────────────────────
+# CRITICAL: never commit .env files. They contain JWT secrets, DB credentials,
+# and Argon2 pepper. Use .env.example as the template (committed).
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+*.pem
+*.key
+*.p12
+*.keystore
+secrets/
+
+# ─── Test & coverage ───────────────────────────────────────────────────────
+coverage/
+.nyc_output/
+*.lcov
+
+# ─── Logs ──────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+logs/
+
+# ─── IDE & editor ──────────────────────────────────────────────────────────
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Mobile build artifacts ────────────────────────────────────────────────
+ios/Pods/
+ios/build/
+android/.gradle/
+android/build/
+android/app/build/
+*.apk
+*.aab
+*.ipa
+
+# ─── Misc ──────────────────────────────────────────────────────────────────
+*.tgz
+.cache/
+tmp/
+temp/
