@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"c:\\\\dev\\\\vaultpass\\\\CLAUDE.md\")",
+      "Bash(Measure-Object -Line)"
+    ]
+  }
+}

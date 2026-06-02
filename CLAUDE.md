@@ -74,3 +74,71 @@ We follow **Git Flow** with branch protection:
 - `chore/*` — tooling, CI, dependency updates
 
 ### Commit message format (Conventional Commits — enforced by commitlint)
+
+```
+feat(crypto): replace Math.random with crypto.getRandomValues for IV generation
+
+Math.random is not cryptographically secure and was flagged in the security
+audit. This switches all IV generation to crypto.getRandomValues(), ensuring
+compliance with engineering rule #3.
+
+Refs: #42
+Security: fixes weak IV generation
+```
+
+**Allowed types:**
+
+| Type | When to use |
+|------|-------------|
+| `feat` | New user-facing feature |
+| `fix` | Bug fix |
+| `security` | Security patch or hardening |
+| `test` | Adding or correcting tests |
+| `docs` | Documentation only |
+| `chore` | Tooling, CI, dependency updates |
+| `refactor` | Code restructuring with no behaviour change |
+| `perf` | Performance improvement |
+
+---
+
+## Tech stack (planned)
+
+| Layer | Technology |
+|-------|-----------|
+| Monorepo | pnpm workspaces |
+| Mobile | React Native + Expo (TypeScript) |
+| Web | React + Vite (TypeScript) |
+| Backend | Node.js + Express (TypeScript) |
+| Database | PostgreSQL + Prisma |
+| Key derivation | Argon2id |
+| Encryption | AES-256-GCM |
+| Auth | JWT + refresh token rotation |
+| 2FA | RFC 6238 TOTP |
+| API hosting | Railway |
+| Web hosting | Vercel |
+| Mobile builds | Expo EAS |
+
+Any change to this stack requires an ADR in `/docs/adr/` and an entry in `DEPENDENCY.md`.
+
+---
+
+## How to work with me (Claude)
+
+- **Plan before coding.** For any non-trivial task, outline the approach and confirm it before writing code. Ask if uncertain.
+- **Cite the rules.** When making a security-relevant decision, reference the specific engineering rule from this file (e.g. "Rule #3 — no Math.random").
+- **Ask before adding dependencies.** No new package without a documented justification ready for `DEPENDENCY.md`.
+- **Write tests alongside code.** Do not deliver a feature without its tests. `packages/crypto` requires 100% coverage — no exceptions.
+- **Use Conventional Commits.** Every commit message must follow the format above. commitlint will reject non-conforming messages.
+- **Never suggest committing directly to `main`.** All work flows through `develop` via a PR with at least one review.
+
+---
+
+## Current focus
+
+**M0 — Foundation** is underway. The initial repository scaffolding was completed in commit `5f64a59` (policies, license, documentation stubs).
+
+Immediate next steps:
+
+1. Build out the `/docs` folder — write all founding documents listed above as full markdown files.
+2. Set up the pnpm monorepo structure (`packages/crypto`, `packages/mobile`, `packages/web`, `apps/api`).
+3. Wire up tooling: TypeScript strict config, ESLint, Prettier, commitlint, Husky pre-commit hooks.
